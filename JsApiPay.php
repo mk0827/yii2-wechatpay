@@ -50,16 +50,11 @@ class JsApiPay
 		//通过code获得openid
 		if (!isset($_GET['code'])){
 			//触发微信返回code码
-			$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING']);
-			$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REDIRECT_URL'].$_SERVER['QUERY_STRING']);
-			$baseUrl = urlencode('http://cms.zhiliaoku.net/mobile/shop/orderproduce');
-			\Yii::info("========================== $baseUrl ==========================");
+			$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 			$url = $this->__CreateOauthUrlForCode($baseUrl);
-			\Yii::info("========================== $url ==========================");
 			Header("Location: $url");
 			exit();
 		} else {
-			\Yii::info('========================== openid ==========================');
 			//获取code码，以获取openid
 		    $code = $_GET['code'];
 			$openid = $this->getOpenidFromMp($code);
