@@ -2,7 +2,6 @@
 namespace mkui\wechatpay;
 
 use mkui\wechatpay\lib\WxPayApi;
-use mkui\wechatpay\lib\WxPayConfig;
 use mkui\wechatpay\lib\WxPayNotify;
 
 
